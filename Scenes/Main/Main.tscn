@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxdnjr4j20osr"]
+
+[ext_resource type="Script" uid="uid://pimyfbmoadi1" path="res://Scenes/Main/Main.gd" id="1_i3fi7"]
+[ext_resource type="Texture2D" uid="uid://c8ctumxmuftjv" path="res://assets/backgrounds/game_background_3/game_background_3.1.png" id="1_qtv3y"]
+[ext_resource type="LabelSettings" uid="uid://8sgf6juvu08s" path="res://Resources/Fonts/Main_Title.tres" id="2_qtv3y"]
+[ext_resource type="AudioStream" uid="uid://bpukn50vdgl8k" path="res://assets/sound/Farm Frolics.ogg" id="3_cmk6n"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i3fi7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qtv3y")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0.2784314)
+self_modulate = Color(0.44, 0.6359999, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.38039216, 0.38039216, 0.38039216, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Foxy Antics"
+label_settings = ExtResource("2_qtv3y")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cmk6n")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -414.5
+offset_top = -198.0
+offset_right = 414.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 12
+columns = 5

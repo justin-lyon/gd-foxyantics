@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8jvlp4ibcxk7"]
+
+[ext_resource type="LabelSettings" uid="uid://uhm73mm5h0mj" path="res://Resources/Fonts/HighScore_Score.tres" id="1_a8wiw"]
+[ext_resource type="Script" uid="uid://cl1qoys73s7ks" path="res://Scenes/HighScoreDisplay/HighScoreDisplay.gd" id="1_sb1we"]
+[ext_resource type="LabelSettings" uid="uid://chikyk4spc3lv" path="res://Resources/Fonts/HighScore_Date.tres" id="2_sb1we"]
+
+[node name="HighScoreDisplay" type="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_sb1we")
+
+[node name="LabelScore" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "score"
+label_settings = ExtResource("1_a8wiw")
+
+[node name="LabelDate" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "11/28/2025"
+label_settings = ExtResource("2_sb1we")
