@@ -38,8 +38,7 @@ func fly_to_player() -> void:
 
 func shoot() -> void:
 	if player_detector.is_colliding():
-		var dir = Vector2.DOWN
-		shooter.shoot(dir)
+		shooter.shoot_at_player()
 
 
 func start_timer() -> void:

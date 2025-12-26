@@ -54,12 +54,12 @@ func setup_points():
 		)
 		_target_points.append(np)	
 	
-	var np: TargetDistanceTime = TargetDistanceTime.new(
+	var returnToStart: TargetDistanceTime = TargetDistanceTime.new(
 		targets[targets.size() - 1].global_position,
 		targets[0].global_position,
 		speed
 	)
-	_target_points.append(np)
+	_target_points.append(returnToStart)
 
 
 func set_moving() -> void:

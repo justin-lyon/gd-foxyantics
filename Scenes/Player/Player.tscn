@@ -244,6 +244,7 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="DebugLabel" type="Label" parent="."]
+visible = false
 offset_left = -14.0
 offset_top = -45.0
 offset_right = 205.0

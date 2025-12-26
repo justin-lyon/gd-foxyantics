@@ -10,6 +10,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	get_tree().paused = false
 	get_scores()
 
 func get_scores() -> void:

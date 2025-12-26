@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Foxy Antics"
-run/main_scene="uid://bdxy5qyy5c73n"
+run/main_scene="uid://bxdnjr4j20osr"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://byu2478tijoua"
 
@@ -20,12 +20,16 @@ config/icon="uid://byu2478tijoua"
 SignalHub="*res://Classes/Globals/SignalHub.gd"
 GameManager="*res://Classes/Globals/GameManager.gd"
 
+[debug]
+
+shapes/main_scene="uid://cpmjyarchqijb"
+
 [display]
 
 window/size/viewport_width=1024
 window/size/viewport_height=768
-window/size/window_width_override=3072
-window/size/window_height_override=2304
+window/size/window_width_override=2048
+window/size/window_height_override=1536
 window/stretch/mode="viewport"
 
 [editor]

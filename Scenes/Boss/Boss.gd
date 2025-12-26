@@ -9,14 +9,7 @@ extends Node2D
 @onready var state_machine: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
 @onready var visuals: Node2D = $Visuals
 
-var _player_ref: Player
 var _invincible: bool = false
-
-func _ready() -> void:
-	_player_ref = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)
-	if _player_ref == null:
-		queue_free()
-
 
 func _on_trigger_area_entered(_area: Area2D) -> void:
 	animation_tree["parameters/conditions/on_trigger"] = true
@@ -59,8 +52,4 @@ func activate_collisions() -> void:
 
 
 func shoot() -> void:
-	shooter.shoot(
-		shooter.global_position.direction_to(
-			_player_ref.global_position
-		)
-	)
+	shooter.shoot_at_player()

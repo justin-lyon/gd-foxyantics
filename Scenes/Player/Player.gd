@@ -2,13 +2,17 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var fell_off_y: float = 800.0
+@export var fell_off_y: float = 150.0
+@export var lives: int = 3
+@export var camera_min: Vector2 = Vector2(-10000, 10000)
+@export var camera_max: Vector2 = Vector2(10000, -10000)
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var debug_label: Label = $DebugLabel
 @onready var shooter: Shooter = $Shooter
 @onready var sound: AudioStreamPlayer2D = $Sound
 @onready var hurt_timer: Timer = $HurtTimer
+@onready var player_cam: Camera2D = $PlayerCam
 
 const JUMP = preload("uid://eviw0poqok6k")
 const DAMAGE = preload("uid://cjhhfqyhj3c2l")
@@ -24,7 +28,8 @@ var _is_hurt: bool = false
 var _is_invincible: bool = false
 
 func _ready() -> void:
-	pass
+	call_deferred("late_init")
+	set_camera_limits()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -53,13 +58,27 @@ func _physics_process(delta: float) -> void:
 	fallen_off()
 
 
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hitbox_area_entered(_area: Area2D) -> void:
 	call_deferred("apply_hit")
 
 
 func _on_hurt_timer_timeout() -> void:
 	_is_hurt = false
+
+
+func late_init() -> void:
+	SignalHub.emit_player_hit(lives)
+
+
+func reduce_lives(reduction: int) -> bool:
+	lives -= reduction
+	SignalHub.emit_player_hit(lives, true)
+	
+	if lives <= 0:
+		print("DEAD")
+		set_physics_process(false)
+		return false
+	return true
 
 
 func jump() -> void:
@@ -76,15 +95,16 @@ func move_horizontal() -> void:
 
 func update_debug_label() -> void:
 	var ds: String = ""
-	ds += "Floor:%s\n" % [is_on_floor()]
+	ds += "Floor:%s LV:%d\n" % [is_on_floor(), lives]
 	ds += "V:%.1f,%.1f\n" % [velocity.x, velocity.y]
 	ds += "P:%.1f,%.1f" % [global_position.x, global_position.y]
 	debug_label.text = ds
 
 
 func fallen_off() -> void:
-	if global_position.y > fell_off_y:
-		queue_free()
+	if global_position.y < fell_off_y:
+		return
+	reduce_lives(1)
 
 
 func apply_hurt_jump() -> void:
@@ -96,6 +116,10 @@ func apply_hurt_jump() -> void:
 
 func apply_hit() -> void:
 	if _is_invincible: 
+		return
+	
+	var is_alive = reduce_lives(1)
+	if !is_alive:
 		return
 	
 	go_invincible()
@@ -120,3 +144,10 @@ func play_effect(effect: AudioStream) -> void:
 	sound.stop()
 	sound.stream = effect
 	sound.play()
+
+
+func set_camera_limits() -> void:
+	player_cam.limit_bottom = camera_min.y
+	player_cam.limit_left = camera_min.x
+	player_cam.limit_top = camera_max.y
+	player_cam.limit_right = camera_max.x

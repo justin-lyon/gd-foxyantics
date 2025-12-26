@@ -22,3 +22,15 @@ signal boss_killed
 
 func emit_boss_killed() -> void:
 	boss_killed.emit()
+
+
+signal player_hit(lives: int, shake: bool)
+
+func emit_player_hit(lives: int = 3, shake: bool = false) -> void:
+	player_hit.emit(lives, shake)
+
+
+signal level_complete(complete: bool)
+
+func emit_level_complete(complete: bool) -> void:
+	level_complete.emit(complete)

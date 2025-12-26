@@ -7,5 +7,14 @@ func _ready() -> void:
 
 
 func _on_boss_killed() -> void:
-	print("boss killed")
 	_is_boss_killed = true
+	print("boss killed")
+
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "open":
+		set_deferred("monitoring", true)
+
+
+func _on_area_entered(_area: Area2D) -> void:
+	SignalHub.emit_level_complete(true)

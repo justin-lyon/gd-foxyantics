@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=4 uid="uid://b4g17wyi5f6nh"]
+
+[ext_resource type="PackedScene" uid="uid://bdxy5qyy5c73n" path="res://Scenes/LevelBase/LevelBase.tscn" id="1_oeok1"]
+[ext_resource type="PackedScene" uid="uid://dbtdnxr5viriq" path="res://Scenes/EnemyBase/Snail/Snail.tscn" id="2_di0pm"]
+[ext_resource type="PackedScene" uid="uid://c3ihfx1dlwy84" path="res://Scenes/FloorSpikes/FloorSpikes.tscn" id="2_tafqu"]
+[ext_resource type="PackedScene" uid="uid://di8p0brtrr5qt" path="res://Scenes/EnemyBase/Frog/Frog.tscn" id="3_tafqu"]
+
+[node name="Level3" instance=ExtResource("1_oeok1")]
+
+[node name="Platforms" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAAC8AAAAHAAAAAAABAC8AAAAHAAAAAAACAC8AAAAHAAAAAAADAC8AAAAHAAAAAAAEAC8AAAAHAAAAAAAFAC8AAAAHAAAAAAAGAC8AAAAHAAAAAAARAC8AAAAHAAAAAAAQAC8AAAAHAAAAAAAPAC8AAAAHAAAAAAAOAC8AAAAHAAAAAAANAC8AAAAHAAAAAAAMAC8AAAAHAAAAAAALAC8AAAAHAAAAAAAKAC8AAAAHAAAAAAAJAC8AAAAHAAAAAAAUAC8AAAAHAAAAAAAVAC8AAAAHAAAAAAAWAC8AAAAHAAAAAAAXAC8AAAAHAAAAAAAYAC8AAAAHAAAAAAD//y8AAAAHAAAAAAAHAC8AAAAHAAAAAAAIAC8AAAAHAAAAAAASAC8AAAAHAAAAAAATAC8AAAAHAAAAAAAZAC8AAAAHAAAAAAAaAC8AAAAHAAAAAAAbAC8AAAAHAAAAAAAHACwAAAAHAAAAAAAIACwAAAAHAAAAAAALACkAAAAHAAAAAAAMACkAAAAHAAAAAAAPACYAAAAHAAAAAAAQACYAAAAHAAAAAAAUACMAAAAHAAAAAAAVACMAAAAHAAAAAAAcACMAAAAHAAAAAAAdACMAAAAHAAAAAAAWACMAAAAHAAAAAAAXACMAAAAHAAAAAAAeACMAAAAHAAAAAAAfACMAAAAHAAAAAAAcAC8AAAAHAAAAAAAdAC8AAAAHAAAAAAAeAC8AAAAHAAAAAAAfAC8AAAAHAAAAAAAgAC8AAAAHAAAAAAAhAC8AAAAHAAAAAAAiAC8AAAAHAAAAAAAjAC8AAAAHAAAAAAAkAC8AAAAHAAAAAAAlAC8AAAAHAAAAAAAmAC8AAAAHAAAAAAAnAC8AAAAHAAAAAAAoAC8AAAAHAAAAAAApAC8AAAAHAAAAAAAqAC8AAAAHAAAAAAArAC8AAAAHAAIAAAAsAC8AAAAHAAIAAAAtAC8AAAAIAAIAAAAuAC8AAAAHAAAAAAAvAC8AAAAHAAAAAAAwAC8AAAAHAAAAAAAxAC8AAAAHAAAAAAAyAC8AAAAHAAAAAAAzAC8AAAAHAAAAAAA0AC8AAAAHAAAAAAA1AC8AAAAHAAAAAAA2AC8AAAAHAAAAAAA3AC8AAAAHAAAAAAA4AC8AAAAHAAAAAAA5AC8AAAAHAAAAAAA6AC8AAAAHAAAAAAA7AC8AAAAHAAAAAAA8AC8AAAAHAAAAAAA9AC8AAAAHAAAAAAA+AC8AAAAHAAAAAAA/AC8AAAAHAAAAAABAAC8AAAAHAAAAAABBAC8AAAAHAAAAAABCAC8AAAAHAAAAAABDAC8AAAAHAAAAAABEAC8AAAAHAAAAAABFAC8AAAAHAAAAAABGAC8AAAAHAAAAAAArACUAAAAGAAAAAAArACYAAAAGAAEAAAArACcAAAAGAAEAAAArACgAAAAGAAEAAAArACkAAAAGAAEAAAArACoAAAAGAAEAAAArACsAAAAGAAEAAAArACwAAAAGAAEAAAArAC0AAAAGAAEAAAArAC4AAAAGAAEAAAAsACUAAAAHAAAAAAAsACYAAAAHAAEAAAAsACcAAAAHAAEAAAAsACgAAAAHAAEAAAAsACkAAAAHAAEAAAAsACoAAAAHAAEAAAAsACsAAAAHAAEAAAAsACwAAAAHAAEAAAAsAC0AAAAHAAEAAAAsAC4AAAAHAAEAAAAtACUAAAAIAAAAAAAtACYAAAAIAAEAAAAtACcAAAAIAAEAAAAtACgAAAAIAAEAAAAtACkAAAAIAAEAAAAtACoAAAAIAAEAAAAtACsAAAAIAAEAAAAtACwAAAAIAAEAAAAtAC0AAAAIAAEAAAAtAC4AAAAIAAEAAAA=")
+
+[node name="Player" parent="." index="2"]
+camera_min = Vector2(0, 0)
+camera_max = Vector2(1000, -700)
+
+[node name="MovingPlatform" parent="Moving Platforms/MP1" index="0" node_paths=PackedStringArray("targets")]
+visible = true
+position = Vector2(665, -174)
+targets = [NodePath("../Marker2D"), NodePath("../Marker2D2")]
+
+[node name="Marker2D" parent="Moving Platforms/MP1" index="1"]
+position = Vector2(665, -169)
+
+[node name="Marker2D2" parent="Moving Platforms/MP1" index="2"]
+position = Vector2(665, -318)
+
+[node name="FloorSpikes" parent="Spikes" index="0" instance=ExtResource("2_tafqu")]
+position = Vector2(480, -356)
+
+[node name="FloorSpikes2" parent="Spikes" index="1" instance=ExtResource("2_tafqu")]
+position = Vector2(605, -163)
+
+[node name="Snail" parent="Mobs" index="0" instance=ExtResource("2_di0pm")]
+position = Vector2(665, -187)
+
+[node name="Snail2" parent="Mobs" index="1" instance=ExtResource("2_di0pm")]
+position = Vector2(130, -220)
+
+[node name="Snail3" parent="Mobs" index="2" instance=ExtResource("2_di0pm")]
+position = Vector2(392, -173)
+
+[node name="Snail4" parent="Mobs" index="3" instance=ExtResource("2_di0pm")]
+position = Vector2(426, -173)
+
+[node name="Snail5" parent="Mobs" index="4" instance=ExtResource("2_di0pm")]
+position = Vector2(458, -174)
+
+[node name="Frog" parent="Mobs" index="5" instance=ExtResource("3_tafqu")]
+position = Vector2(253, -316)
+
+[node name="Boss" parent="." index="10"]
+position = Vector2(934, -163)
+
+[node name="Checkpoint" parent="." index="11"]
+position = Vector2(968, -163)

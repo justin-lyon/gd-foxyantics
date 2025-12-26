@@ -2,8 +2,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	await get_tree().create_timer(2.0).timeout
-	SignalHub.emit_boss_killed()
+	get_tree().paused = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
